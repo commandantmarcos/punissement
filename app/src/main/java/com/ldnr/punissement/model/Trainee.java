@@ -2,6 +2,7 @@ package com.ldnr.punissement.model;
 
 public class Trainee {
 
+    private int id_trainee;
     private String firstName;
     private String lastName;
     private String phone;
@@ -10,11 +11,20 @@ public class Trainee {
     public Trainee() {
     }
 
-    public Trainee(String firstName, String lastName, String phone, String email) {
+    public Trainee(int id_trainee, String firstName, String lastName, String phone, String email) {
+        this.id_trainee = id_trainee;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
+    }
+
+    public int getId_trainee() {
+        return id_trainee;
+    }
+
+    public void setId_trainee(int id_trainee) {
+        this.id_trainee = id_trainee;
     }
 
     public String getEmail() {
@@ -25,14 +35,6 @@ public class Trainee {
         this.email = email;
     }
 
-    public String getPhoneNum() {
-
-        return phone;
-    }
-
-    public void setPhoneNum(String phone) {
-        this.phone = phone;
-    }
 
     public String getLastName() {
 
@@ -51,4 +53,11 @@ public class Trainee {
         this.firstName = firstName;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
