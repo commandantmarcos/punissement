@@ -1,7 +1,7 @@
 package com.ldnr.punissement.model;
 
 public class Trainee {
-
+/// hello
     private String firstName;
     private String lastName;
     private String phone;
