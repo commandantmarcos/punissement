@@ -52,12 +52,12 @@ public class Trainee {
         this.email = email;
     }
 
-    public String getPhoneNum() {
+    public String getPhone() {
 
         return phone;
     }
 
-    public void setPhoneNum(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

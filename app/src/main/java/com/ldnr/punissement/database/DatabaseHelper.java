@@ -7,9 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ldnr.punissement.model.Trainee;
+import com.ldnr.punissement.model.Group;
+import com.ldnr.punissement.model.Task;
+import com.ldnr.punissement.model.Location;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ldnr.punissement.model.Group.*;
 
 /**
  *
@@ -32,6 +37,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // create Trainees table
         db.execSQL(Trainee.CREATE_TABLE);
+        db.execSQL(Group.CREATE_TABLE);
+        db.execSQL(Task.CREATE_TABLE);
+        db.execSQL(Location.CREATE_TABLE);
     }
 
     // Upgrading database
@@ -39,18 +47,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + Trainee.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Group.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Task.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Location.TABLE_NAME);
         // Create tables again
         onCreate(db);
     }
 
-    public long insertTrainee(Trainee Trainee) {
+    /**********************************************************************************************
+     *
+     *                                      TRAINEE
+     *
+     **********************************************************************************************/
+
+    public long insertTrainee(Trainee trainee) {
         // get writable database as we want to write data
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
-        values.put(Trainee.COLUMN_FIRSTNAME, Trainee.getFirstName());
-        values.put(Trainee.COLUMN_LASTNAME, Trainee.getLastName());
+        values.put(Trainee.COLUMN_FIRSTNAME, trainee.getFirstName());
+        values.put(Trainee.COLUMN_LASTNAME, trainee.getLastName());
+        values.put(Trainee.COLUMN_PHONE, trainee.getPhone());
+        values.put(Trainee.COLUMN_EMAIL, trainee.getEmail());
 
         // insert row
         long id = db.insert(Trainee.TABLE_NAME, null, values);
@@ -103,9 +122,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Trainee trainee = new Trainee();
-                trainee.setId(cursor.getInt(cursor.getColumnIndex(trainee.COLUMN_ID)));
-                trainee.setFirstName(cursor.getString(cursor.getColumnIndex(trainee.COLUMN_FIRSTNAME)));
-                trainee.setLastName(cursor.getString(cursor.getColumnIndex(trainee.COLUMN_LASTNAME)));
+                trainee.setId(cursor.getInt(cursor.getColumnIndex(Trainee.COLUMN_ID)));
+                trainee.setFirstName(cursor.getString(cursor.getColumnIndex(Trainee.COLUMN_FIRSTNAME)));
+                trainee.setLastName(cursor.getString(cursor.getColumnIndex(Trainee.COLUMN_LASTNAME)));
+                trainee.setPhone(cursor.getString(cursor.getColumnIndex(Trainee.COLUMN_PHONE)));
+                trainee.setEmail(cursor.getString(cursor.getColumnIndex(Trainee.COLUMN_EMAIL)));
 
                 trainees.add(trainee);
             } while (cursor.moveToNext());
@@ -135,11 +156,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Trainee.COLUMN_FIRSTNAME, Trainee.getFirstName());
-        values.put(Trainee.COLUMN_LASTNAME, Trainee.getLastName());
+        values.put(com.ldnr.punissement.model.Trainee.COLUMN_FIRSTNAME, Trainee.getFirstName());
+        values.put(com.ldnr.punissement.model.Trainee.COLUMN_LASTNAME, Trainee.getLastName());
+        values.put(com.ldnr.punissement.model.Trainee.COLUMN_PHONE, Trainee.getPhone());
+        values.put(com.ldnr.punissement.model.Trainee.COLUMN_EMAIL, Trainee.getEmail());
 
         // updating row
-        return db.update(Trainee.TABLE_NAME, values, Trainee.COLUMN_ID + " = ?",
+        return db.update(com.ldnr.punissement.model.Trainee.TABLE_NAME, values, com.ldnr.punissement.model.Trainee.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(Trainee.getId())});
     }
 
@@ -149,4 +172,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(Trainee.getId())});
         db.close();
     }
+
+    /**********************************************************************************************
+     *
+     *                                      GROUP
+     *
+     **********************************************************************************************/
+
+   /** public long insertGroup(Group group) {
+        // get writable database as we want to write data
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(Trainee.COLUMN_FIRSTNAME, Trainee.getFirstName());
+        values.put(Trainee.COLUMN_LASTNAME, Trainee.getLastName());
+        values.put(Trainee.COLUMN_PHONE, Trainee.getPhone());
+        values.put(Trainee.COLUMN_EMAIL, Trainee.getEmail());
+
+        // insert row
+        long id = db.insert(Trainee.TABLE_NAME, null, values);
+
+        // close db connection
+        db.close();
+
+        // return newly inserted row id
+        return id;
+    }**/
+
+
+    /**********************************************************************************************
+     *
+     *                                      LOCATION
+     *
+     **********************************************************************************************/
+
+
+
+    /**********************************************************************************************
+     *
+     *                                      TASK
+     *
+     **********************************************************************************************/
+
 }
