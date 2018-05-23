@@ -25,9 +25,11 @@ public class Trainee {
                     + COLUMN_EMAIL + " VARCHAR(255) NULL"
                     + ")";
 
+    // default constructor
     public Trainee() {
     }
 
+    // constructor by parameters
     public Trainee(int id, String firstName, String lastName, String phone, String email) {
         this.id = id;
         this.firstName = firstName;
@@ -52,12 +54,12 @@ public class Trainee {
         this.email = email;
     }
 
-    public String getPhoneNum() {
+    public String getPhone() {
 
         return phone;
     }
 
-    public void setPhoneNum(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
