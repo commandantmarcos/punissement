@@ -17,6 +17,11 @@ public class Group {
                     + COLUMN_GROUPNAME + " VARCHAR(255) NOT NULL,"
                     + ")";
 
+    // default constructor
+    public Group(){
+    }
+
+    // constructor by parameters
     public Group(int id, String groupName) {
         this.id = id;
         this.groupName = groupName;

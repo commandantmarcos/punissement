@@ -28,6 +28,12 @@ public class Task {
     private Timestamp date;
     private Location loc;
 
+
+    // default constructor
+    public Task(){
+    }
+
+    // constructor by parameters
     public Task(int id, String type, String taskName, Timestamp date, Location loc) {
         this.id = id;
         this.type = type;
@@ -35,6 +41,7 @@ public class Task {
         this.date = date;
         this.loc = loc;
     }
+
 
     public int getId() {
         return id;

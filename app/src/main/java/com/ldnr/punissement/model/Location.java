@@ -17,6 +17,11 @@ public class Location {
     private int id;
     private String locName;
 
+    // default constructor
+    public Location(){
+    }
+
+    // constructor by parameters
     public Location(int id, String locName) {
         this.id = id;
         this.locName = locName;
