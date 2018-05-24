@@ -1,11 +1,8 @@
 package com.ldnr.punissement;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -24,7 +21,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ChangeTrainee extends AppCompatActivity {
+public class ChangeTraineeActivity extends AppCompatActivity {
 
     private Button takePictureButton;
     private ImageView imageView;
@@ -70,7 +67,7 @@ public class ChangeTrainee extends AppCompatActivity {
 
     public void takePictureClicked(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        file = FileProvider.getUriForFile(ChangeTrainee.this, BuildConfig.APPLICATION_ID + ".provider",
+        file = FileProvider.getUriForFile(ChangeTraineeActivity.this, BuildConfig.APPLICATION_ID + ".provider",
                 getOutPutMediaFile());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
         startActivityForResult(intent, 100);

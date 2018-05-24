@@ -12,7 +12,7 @@ import com.ldnr.punissement.viewAdapter.TraineeAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Activity_traineesList extends AppCompatActivity {
+public class TraineesListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Trainee> list = new ArrayList<>();
