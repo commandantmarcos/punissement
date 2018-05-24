@@ -38,6 +38,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         taskVH.blind(task);
     }
 
+    //com vide
     @Override
     public int getItemCount(){
         return list.size();

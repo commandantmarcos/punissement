@@ -19,6 +19,7 @@ public class TaskListActivity extends AppCompatActivity {
     private List<Task> list = new ArrayList<>();
     private DatabaseHelper dbh ;
 
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -32,6 +32,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
 
 
+    //
     // recover from an object to fill a cell
     public void blind (Task task){
 
