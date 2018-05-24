@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onEditClicked(View view) {
-        Intent intent = new Intent(this, ChangeTrainee.class);
+        Intent intent = new Intent(this, ChangeTraineeActivity.class);
         startActivity(intent);
     }
 }
