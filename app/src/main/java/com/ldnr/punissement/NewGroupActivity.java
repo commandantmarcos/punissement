@@ -10,7 +10,7 @@ public class NewGroupActivity extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle saveInstanceState){
         super.onCreate( saveInstanceState);
-        setContentView(R.layout.activity_newgroup);
+        setContentView(R.layout.activity_new_group);
     }
 
     public void onAddGroupClicked(View view) {

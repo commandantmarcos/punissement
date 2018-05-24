@@ -28,7 +28,7 @@ public class GroupListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grouplist);
+        setContentView(R.layout.activity_group_list);
     }
 
     private void addGroup(){

@@ -23,7 +23,7 @@ public class TaskListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tasklist);
+        setContentView(R.layout.activity_task_list);
 
             addTask();
 

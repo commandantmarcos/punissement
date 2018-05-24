@@ -24,7 +24,7 @@ public class TraineeAdapter extends RecyclerView.Adapter<TraineeViewHolder> {
     @Override
     public TraineeViewHolder onCreateViewHolder(ViewGroup viewGroup, int itemType){
 
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_traineeslist, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_trainees_list, viewGroup, false);
         return new TraineeViewHolder(view);
     }
 

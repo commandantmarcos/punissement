@@ -21,7 +21,7 @@ public class TraineesListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_traineeslist);
+        setContentView(R.layout.activity_trainees_list);
 
         addTrainees();
 
