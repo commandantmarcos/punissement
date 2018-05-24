@@ -80,15 +80,16 @@ public class ChangeTraineeActivity extends AppCompatActivity {
                 imageView.setImageURI(file);
             }
         }if (requestCode == 101) {
-            if (resultCode == RESULT_OK) { // apparement une image sélectionnée ne renvoie pas RESULT_OK, à vérifier
+            if (resultCode == RESULT_OK) {
+                file = data.getData();
                 imageView.setImageURI(file);
             }
         }
     }
 
     public void chooseDirectoryClicked(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.title_select_picture)), 101);
+        startActivityForResult(intent, 101);
     }
 }
