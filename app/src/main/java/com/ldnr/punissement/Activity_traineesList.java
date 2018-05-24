@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.ldnr.punissement.database.DatabaseHelper;
 import com.ldnr.punissement.model.Trainee;
 import com.ldnr.punissement.viewAdapter.TraineeAdapter;
 
@@ -15,6 +16,7 @@ public class Activity_traineesList extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Trainee> list = new ArrayList<>();
+    private DatabaseHelper dbh ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class Activity_traineesList extends AppCompatActivity {
     }
 
     private void addTrainees(){
-       // list.add(new Trainee(getId(),))
+        dbh = new DatabaseHelper(getApplicationContext());
+        list = dbh.getAllTrainees();
     }
 }
