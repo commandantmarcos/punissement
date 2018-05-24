@@ -4,4 +4,7 @@
     <string name="button_edit_trainee">Edit trainee</string>
     <string name="button_directory">Directory</string>
     <string name="title_select_picture">Select Picture</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_group_list">Group list</string>
+    <string name="already_here">You\'re already here</string>
 </resources>
