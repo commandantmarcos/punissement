@@ -11,6 +11,11 @@ import com.ldnr.punissement.model.Group;
 import com.ldnr.punissement.model.Task;
 import com.ldnr.punissement.model.Location;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -402,7 +407,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Task.COLUMN_TYPE, task.getTaskName());
         values.put(Task.COLUMN_TASKNAME, task.getTaskName());
         values.put(Task.COLUMN_DATE, task.getDate().toString());
-        values.put(Task.COLUMN_LOC, task.getLoc().getId());
+        values.put(Task.COLUMN_LOC, task.getLoc());
 
         // insert row
         long id = db.insert(Task.TABLE_NAME, null, values);
@@ -428,12 +433,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         // prepare Task object
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = null;
+        try {
+            date = (Date)formatter.parse(cursor.getString(cursor.getColumnIndex(Task.COLUMN_DATE)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Task task = new Task(
                 cursor.getInt(cursor.getColumnIndex(Task.COLUMN_ID)),
                 cursor.getString(cursor.getColumnIndex(Task.COLUMN_TYPE)),
                 cursor.getString(cursor.getColumnIndex(Task.COLUMN_TASKNAME)),
-                cursor.getString(cursor.getColumnIndex(Task.COLUMN_DATE)),
-                cursor.getClass(cursor.getColumnIndex(Task.COLUMN_LOC))
+                new Timestamp(date.getTime()),
+                cursor.getInt(cursor.getColumnIndex(Task.COLUMN_LOC))
         );
 
         // close the db connection
@@ -455,12 +467,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
+                DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = null;
+                try {
+                    date = (Date)formatter.parse(cursor.getString(cursor.getColumnIndex(Task.COLUMN_DATE)));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 Task task = new Task();
                 task.setId(cursor.getInt(cursor.getColumnIndex(Task.COLUMN_ID)));
                 task.setType(cursor.getString(cursor.getColumnIndex(Task.COLUMN_TYPE)));
                 task.setTaskName(cursor.getString(cursor.getColumnIndex(Task.COLUMN_TASKNAME)));
-                task.setDate(cursor.getString(cursor.getColumnIndex(Task.COLUMN_DATE)));
-                task.setLoc(cursor.getString(cursor.getColumnIndex(Task.COLUMN_LOC)));
+                task.setDate(new Timestamp(date.getTime()));
+                task.setLoc(cursor.getInt(cursor.getColumnIndex(Task.COLUMN_LOC)));
 
                 tasks.add(task);
             } while (cursor.moveToNext());
@@ -493,7 +512,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Task.COLUMN_TYPE, task.getType());
         values.put(Task.COLUMN_TASKNAME, task.getTaskName());
         values.put(Task.COLUMN_DATE, task.getDate().toString());
-        values.put(Task.COLUMN_LOC, task.getLoc().getId());
+        values.put(Task.COLUMN_LOC, task.getLoc());
 
         // updating row
         return db.update(com.ldnr.punissement.model.Task.TABLE_NAME, values, com.ldnr.punissement.model.Task.COLUMN_ID + " = ?",
