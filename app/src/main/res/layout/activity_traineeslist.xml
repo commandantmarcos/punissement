@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".TraineesListActivity">
 
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.CardView tools:style="@style/CardView"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/traineesRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+
 
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="2dp"
@@ -28,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/ic_launcher_background" />
+                tools:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/app_name"/>
 
             <TextView
                 android:id="@+id/firstName"
