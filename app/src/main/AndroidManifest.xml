@@ -31,8 +31,33 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+<<<<<<< HEAD
         <activity android:name=".TraineesListActivity" />
         <activity android:name=".TaskListActivity"></activity>
+=======
+        <activity android:name=".TraineesListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ChangeTraineeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+            </intent-filter>
+        </activity>
+
+    <!--   <activity android:name=".GroupListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+            </intent-filter>
+        </activity> -->
+
+
+>>>>>>> 859ca9f962deb7580cecf39e1eb4f9011c3ee848
     </application>
 
 </manifest>
