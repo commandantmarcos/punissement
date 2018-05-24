@@ -40,7 +40,7 @@ public class TraineeViewHolder extends RecyclerView.ViewHolder {
         textView_id.setText(trainee.getId());
         textView_firstName.setText(trainee.getFirstName());
         textView_lastName.setText(trainee.getLastName());
-        textView_phone.setText(trainee.getPhoneNum());
+        textView_phone.setText(trainee.getPhone());
         textView_mail.setText(trainee.getEmail());
 
         //Picasso.with(imageView_pic.getContext()).load(trainee.getImageUrl()).centerCrop().fit().into(imageView_pic);
