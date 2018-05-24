@@ -107,12 +107,11 @@ public class ChangeTraineeActivity extends AppCompatActivity {
         Intent intent = new Intent();
         if (item.getItemId() == R.id.home) {
             intent.setClass(this, MainActivity.class);
-            startActivity(intent);
         }
         else {
-            //intent.setClass(this, GroupListActivity.class);
-            Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
+            intent.setClass(this, GroupListActivity.class);
         }
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }

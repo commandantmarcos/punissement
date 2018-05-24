@@ -33,10 +33,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.already_here, Toast.LENGTH_SHORT).show();
         }
         else {
-            /*Intent intent = new Intent();
-            intent.setClass(this, GroupListActivity.class);
-            startActivity(intent); */
-            Toast.makeText(this, "Not available", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, GroupListActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
