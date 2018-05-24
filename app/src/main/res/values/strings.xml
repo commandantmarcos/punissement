@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Punissement</string>
     <string name="button_photo">Photo</string>
-    <string name="button_edit_trainee">Edit trainee</string>
+    <string name="button_edit_trainee">Edit trainee (photo)</string>
     <string name="button_directory">Directory</string>
     <string name="title_select_picture">Select Picture</string>
     <string name="menu_home">Home</string>
